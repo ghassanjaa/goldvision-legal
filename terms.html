@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GoldVision — Terms of Service</title>
+  <style>
+    :root {
+      --gold: #F5C842;
+      --gold2: #FFE57A;
+      --bg: #0A0A0C;
+      --surface: #141416;
+      --surface2: #1C1C20;
+      --border: #2A2A2E;
+      --text: #F0F0F0;
+      --text2: #9A9A9E;
+      --red: #FF453A;
+      --yellow: #FFD60A;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      line-height: 1.7;
+      padding: 0 20px 80px;
+    }
+    header {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 0 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+    .breadcrumb { font-size: 13px; color: var(--text2); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    h1 {
+      font-size: 38px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .meta { font-size: 13px; color: var(--text2); }
+    .container { max-width: 760px; margin: 0 auto; }
+
+    .warning-box {
+      background: rgba(255, 69, 58, 0.08);
+      border: 1px solid rgba(255, 69, 58, 0.35);
+      border-left: 3px solid var(--red);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .warning-box h2 {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--red);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .warning-box p {
+      font-size: 14px;
+      color: var(--text2);
+      margin-bottom: 0;
+    }
+    .warning-box strong { color: var(--text); }
+
+    section { margin-bottom: 44px; }
+    h2.section-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .clause-number {
+      display: inline-block;
+      background: var(--gold);
+      color: #000;
+      font-size: 11px;
+      font-weight: 800;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+    .clause {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin-bottom: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .clause-body { flex: 1; }
+    .clause-body h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .clause-body p {
+      font-size: 14px;
+      color: var(--text2);
+      margin-bottom: 0;
+    }
+    p {
+      font-size: 15px;
+      color: var(--text2);
+      margin-bottom: 14px;
+    }
+    ul { list-style: none; padding: 0; }
+    ul li {
+      font-size: 15px;
+      color: var(--text2);
+      padding: 8px 0 8px 20px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    ul li:last-child { border-bottom: none; }
+    ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 12px;
+      top: 10px;
+    }
+    .sub-box {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 12px;
+    }
+    .sub-plan {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .sub-plan:last-child { border-bottom: none; }
+    .plan-name { font-weight: 700; font-size: 15px; }
+    .plan-price { color: var(--gold); font-weight: 800; font-size: 15px; }
+    .plan-note { font-size: 12px; color: var(--text2); margin-top: 2px; }
+    .info-block {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-top: 14px;
+    }
+    .info-block p { margin-bottom: 0; font-size: 14px; }
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .contact-icon { font-size: 36px; }
+    .contact-text h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .contact-text a { color: var(--gold); text-decoration: none; font-size: 14px; }
+    footer {
+      max-width: 760px;
+      margin: 60px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text2);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="breadcrumb"><a href="index.html">GoldVision</a> › Terms of Service</div>
+    <h1>Terms of Service</h1>
+    <div class="meta">Effective date: June 1, 2026 &nbsp;·&nbsp; Last updated: June 1, 2026</div>
+  </header>
+
+  <div class="container">
+
+    <!-- Risk Warning -->
+    <div class="warning-box">
+      <h2>⚠️ Important Risk Disclosure</h2>
+      <p>
+        <strong>GoldVision does not provide financial advice.</strong> All signals, predictions, indicators, and analysis displayed in this App are for <strong>informational and educational purposes only</strong>. Trading and investing in gold, commodities, and forex involves <strong>substantial risk of loss</strong> — including the loss of your entire invested capital. Past performance is not indicative of future results. Always consult a qualified financial advisor before making any investment decision.
+      </p>
+    </div>
+
+    <!-- Acceptance -->
+    <section>
+      <h2 class="section-title">1. Acceptance of Terms</h2>
+      <p>By downloading, installing, or using GoldVision ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the App.</p>
+      <p>These Terms constitute a legally binding agreement between you and Ghassan Jaam ("Developer", "we", "us"), the developer and publisher of GoldVision.</p>
+    </section>
+
+    <!-- Nature of the App -->
+    <section>
+      <h2 class="section-title">2. Nature of the App &amp; Disclaimer</h2>
+
+      <div class="clause">
+        <span class="clause-number">1</span>
+        <div class="clause-body">
+          <h3>No Financial Advice</h3>
+          <p>Nothing in GoldVision constitutes financial, investment, trading, or tax advice. The App is an analytical tool only. All content — signals, predictions, indicators, scores, backtest results — is for informational and educational purposes.</p>
+        </div>
+      </div>
+
+      <div class="clause">
+        <span class="clause-number">2</span>
+        <div class="clause-body">
+          <h3>No Guarantee of Accuracy</h3>
+          <p>Market data is sourced from third-party providers (Yahoo Finance, public RSS feeds). We make no warranty as to the accuracy, completeness, timeliness, or fitness for purpose of any data displayed. Data may be delayed, incorrect, or unavailable.</p>
+        </div>
+      </div>
+
+      <div class="clause">
+        <span class="clause-number">3</span>
+        <div class="clause-body">
+          <h3>Simulated &amp; Approximate Data</h3>
+          <p>Certain data sets within the App — including Commitment of Traders (COT) positioning — are simulated approximations and do not represent real-time or official CFTC data. They are clearly labeled as such and must not be relied upon for real trading decisions.</p>
+        </div>
+      </div>
+
+      <div class="clause">
+        <span class="clause-number">4</span>
+        <div class="clause-body">
+          <h3>AI Signals Are Probabilistic</h3>
+          <p>Trading signals generated by the App's AI engines are probabilistic estimates based on historical patterns and technical indicators. They are not predictions and they can and will be wrong. Confidence percentages reflect model agreement, not certainty of outcome.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subscriptions -->
+    <section>
+      <h2 class="section-title">3. GoldVision Pro Subscription</h2>
+      <p>Certain features of the App require an active GoldVision Pro subscription, billed through Apple's App Store in-app purchase system.</p>
+
+      <div class="sub-box">
+        <div class="sub-plan">
+          <div>
+            <div class="plan-name">GoldVision Pro — Monthly</div>
+            <div class="plan-note">Billed every 30 days · Cancel anytime</div>
+          </div>
+          <div class="plan-price">$9.99/mo</div>
+        </div>
+        <div class="sub-plan">
+          <div>
+            <div class="plan-name">GoldVision Pro — Annual</div>
+            <div class="plan-note">Billed once per year · Best value · Save ~50%</div>
+          </div>
+          <div class="plan-price">$59.99/yr</div>
+        </div>
+      </div>
+
+      <div class="info-block" style="margin-top: 18px;">
+        <p>Prices are listed in USD and may vary by country or region due to local App Store pricing. Subscription automatically renews unless cancelled at least 24 hours before the end of the current period. Your Apple ID account will be charged upon confirmation of purchase. You can manage or cancel your subscription at any time in your iPhone Settings → Apple ID → Subscriptions.</p>
+      </div>
+
+      <p style="margin-top: 18px;">A <strong>free tier</strong> is always available. The Home tab — including live gold price, AI verdict, native price chart, and key indicators — is free with no subscription required.</p>
+    </section>
+
+    <!-- Refunds -->
+    <section>
+      <h2 class="section-title">4. Refunds</h2>
+      <p>All purchases are processed and fulfilled by Apple. Refund requests must be submitted directly to Apple at <a href="https://reportaproblem.apple.com" style="color:var(--gold)" target="_blank">reportaproblem.apple.com</a>. We do not have the ability to issue refunds directly.</p>
+      <p>Apple's standard refund policy applies. Refunds are generally granted for accidental purchases or if the App is not functioning as described — at Apple's sole discretion.</p>
+    </section>
+
+    <!-- Paper Trading -->
+    <section>
+      <h2 class="section-title">5. Paper Trading</h2>
+      <p>The Paper Trading feature simulates trades using virtual money only. It does not involve real funds, real brokerage accounts, or real financial instruments. Results in Paper Trading do not reflect actual market execution, slippage, liquidity, or real trading performance.</p>
+      <p>Paper Trading is a simulation and educational tool. We make no representation that Paper Trading results will be replicated in live markets.</p>
+    </section>
+
+    <!-- User Responsibilities -->
+    <section>
+      <h2 class="section-title">6. User Responsibilities</h2>
+      <ul>
+        <li>You must be at least 17 years of age to use GoldVision</li>
+        <li>You are solely responsible for all trading and investment decisions you make based on information from the App</li>
+        <li>You agree not to use the App for any unlawful purpose or in any manner that violates applicable laws or regulations</li>
+        <li>You agree not to attempt to reverse-engineer, decompile, or extract data from the App by automated means</li>
+        <li>You accept that you may lose money when trading financial instruments and that GoldVision bears no liability for such losses</li>
+      </ul>
+    </section>
+
+    <!-- Limitation of Liability -->
+    <section>
+      <h2 class="section-title">7. Limitation of Liability</h2>
+      <p>To the maximum extent permitted by applicable law, GoldVision, its developer, and its affiliates shall not be liable for:</p>
+      <ul>
+        <li>Any trading or investment losses incurred as a result of using the App or relying on its signals</li>
+        <li>Inaccurate, delayed, or unavailable market data from third-party sources</li>
+        <li>Loss of profits, revenue, data, goodwill, or other intangible losses</li>
+        <li>Any indirect, incidental, special, consequential, or punitive damages</li>
+        <li>Service interruptions or App downtime for any reason</li>
+      </ul>
+      <div class="info-block">
+        <p>Our total liability to you for any claim arising from use of the App is limited to the amount you paid for the App subscription in the 12 months preceding the claim, or $10 USD — whichever is greater.</p>
+      </div>
+    </section>
+
+    <!-- Intellectual Property -->
+    <section>
+      <h2 class="section-title">8. Intellectual Property</h2>
+      <p>All content within GoldVision — including the App design, AI analysis engines, branding, icons, and text — is the exclusive property of Ghassan Jaam and protected by applicable copyright and intellectual property laws.</p>
+      <p>Third-party data displayed in the App (Yahoo Finance, RSS news content) is owned by the respective providers and is subject to their own terms of use. GoldVision is not affiliated with or endorsed by Yahoo Finance, Reuters, MarketWatch, or any financial institution.</p>
+    </section>
+
+    <!-- Governing Law -->
+    <section>
+      <h2 class="section-title">9. Governing Law</h2>
+      <p>These Terms are governed by and construed in accordance with the laws of Canada, without regard to conflict of law principles. Any disputes arising from these Terms or your use of the App shall be resolved through good-faith negotiation first; failing that, through binding arbitration or the courts of competent jurisdiction in Canada.</p>
+    </section>
+
+    <!-- Changes -->
+    <section>
+      <h2 class="section-title">10. Changes to These Terms</h2>
+      <p>We reserve the right to modify these Terms at any time. Changes become effective upon posting the updated Terms to this page, indicated by a new "Last updated" date. Continued use of the App after the effective date constitutes your acceptance of the revised Terms.</p>
+      <p>For material changes, we will make reasonable efforts to notify you via an in-app notice.</p>
+    </section>
+
+    <!-- Contact -->
+    <section>
+      <h2 class="section-title">11. Contact</h2>
+      <div class="contact-box">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-text">
+          <h3>Questions About These Terms</h3>
+          <a href="mailto:axesalon@hotmail.ca">axesalon@hotmail.ca</a>
+          <p style="font-size:13px; color:var(--text2); margin-top:4px; margin-bottom:0;">We aim to respond within 5 business days.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <span>© 2026 GoldVision · Ghassan Jaam</span>
+    <span>
+      <a href="index.html">Home</a> &nbsp;·&nbsp;
+      <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="mailto:axesalon@hotmail.ca">Support</a>
+    </span>
+  </footer>
+
+</body>
+</html>

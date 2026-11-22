@@ -179,7 +179,7 @@
   <header>
     <div class="breadcrumb"><a href="index.html">GoldVision</a> › Privacy Policy</div>
     <h1>Privacy Policy</h1>
-    <div class="meta">Effective date: June 1, 2026 &nbsp;·&nbsp; Last updated: June 1, 2026</div>
+    <div class="meta">Effective date: June 1, 2026 &nbsp;·&nbsp; Last updated: November 22, 2026</div>
   </header>
 
   <div class="container">
@@ -188,10 +188,11 @@
     <div class="summary-box">
       <h2>Plain Language Summary</h2>
       <div class="summary-item"><div class="dot"></div>We do not collect your name, email, or any personal information.</div>
-      <div class="summary-item"><div class="dot"></div>We do not track you, serve ads, or share data with third parties.</div>
-      <div class="summary-item"><div class="dot"></div>Market data is fetched from public sources and displayed — never stored on our servers.</div>
-      <div class="summary-item"><div class="dot"></div>Your settings stay on your device only (Apple's UserDefaults, sandboxed to the app).</div>
-      <div class="summary-item"><div class="dot"></div>Subscription management is handled entirely by Apple. We never see your payment details.</div>
+      <div class="summary-item"><div class="dot"></div>GoldVision contains no advertising and no advertising SDK, and does not track you across other companies' apps or websites.</div>
+      <div class="summary-item"><div class="dot"></div>Market data is fetched from public sources and displayed. Only if you turn on closed-app alerts do a push token, your subscriber ID and your watched price levels go to our relay server.</div>
+      <div class="summary-item"><div class="dot"></div>Your settings, journal and signal history stay on your device, and in your own private iCloud if you have iCloud enabled.</div>
+      <div class="summary-item"><div class="dot"></div>Purchases are processed by Apple and verified through RevenueCat. We never see your payment details.</div>
+      <div class="summary-item"><div class="dot"></div>The AI features (explaining a signal, answering questions about it) run on your device. Nothing you type or view is sent to us or to an AI provider.</div>
     </div>
 
     <!-- 1. Who We Are -->
@@ -203,33 +204,76 @@
 
     <!-- 2. Data We Do NOT Collect -->
     <section>
-      <h2 class="section-title">2. Data We Do Not Collect</h2>
-      <p>GoldVision does not collect, transmit, or store any of the following:</p>
+      <h2 class="section-title">2. Information We Do Not Request</h2>
+      <p>GoldVision does not ask you to provide the following information:</p>
       <ul>
         <li>Name, email address, phone number, or any contact information</li>
-        <li>Location data (precise or approximate)</li>
-        <li>Device identifiers (IDFA, IDFV, serial number)</li>
-        <li>Browsing history or usage analytics</li>
         <li>Financial data, trading accounts, or brokerage credentials</li>
         <li>Camera, microphone, contacts, or photos</li>
         <li>Payment or billing information (handled exclusively by Apple)</li>
-        <li>Crash reports or diagnostics (no third-party crash SDK is integrated)</li>
       </ul>
+      <p>Network providers described below may automatically receive limited device and request information, such as your IP address.</p>
     </section>
 
     <!-- 3. Data Stored on Your Device -->
     <section>
       <h2 class="section-title">3. Data Stored on Your Device Only</h2>
-      <p>The following information is stored locally on your device using Apple's sandboxed storage and never leaves it:</p>
+      <p>The following information is stored locally on your device using Apple's sandboxed storage:</p>
       <ul>
         <li><strong>App preferences</strong> — selected timeframe, onboarding completion status (UserDefaults)</li>
-        <li><strong>Price alerts</strong> — thresholds you configure in the Alerts screen (UserDefaults)</li>
-        <li><strong>Paper trading history</strong> — virtual trade records and P&amp;L (local file storage)</li>
-        <li><strong>Trade journal entries</strong> — notes and trade logs you write (local file storage)</li>
-        <li><strong>Signal history</strong> — past buy/sell signal log for your reference (local file storage)</li>
+        <li><strong>Alert settings</strong> — notification preferences and confidence thresholds (UserDefaults)</li>
+        <li><strong>Paper trading history</strong> — virtual trade records and P&amp;L (UserDefaults)</li>
+        <li><strong>Trade journal entries</strong> — notes and trade logs you write (UserDefaults)</li>
+        <li><strong>Signal history</strong> — past buy/sell signal log for your reference (UserDefaults)</li>
       </ul>
       <div class="info-block">
-        <p>None of this data is backed up to our servers, transmitted over the network, or shared with any party. It lives exclusively in the app's sandboxed container on your device.</p>
+        <p>None of the above is sent to our servers or shared with any other party. It lives in the app's sandboxed container on your device. If you have iCloud enabled, it is also synced through your own private iCloud (iCloud key-value storage), which Apple operates and which we cannot read.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">3a. Alerts While the App Is Closed</h2>
+      <p>iOS only lets an app raise a notification while it is running. To alert you when a price level you armed is reached with the app closed, GoldVision sends the following to its own relay server:</p>
+      <ul>
+        <li><strong>An Apple push token</strong> — issued by Apple, identifies this installation of this app on this device. It is not an advertising identifier.</li>
+        <li><strong>Your RevenueCat customer ID</strong> — an anonymous identifier RevenueCat assigns to your purchases. The relay asks RevenueCat whether your subscription is active before it sends a subscriber-only notification, and stores the ID beside your push token. This makes the stored record linked to your installation.</li>
+        <li><strong>The price levels you are watching</strong> — an instrument, a price, and whether you want to be told when it is crossed upward or downward.</li>
+        <li><strong>Your device language</strong> — so the notification arrives in Arabic or English.</li>
+      </ul>
+      <div class="info-block">
+        <p><strong>What is deliberately not sent:</strong> your account balance, your position sizes, your trade journal, your imported broker statements, your signal history, or any analysis the app performs. The server compares a price with a number; it cannot reconstruct a position from what it holds.</p>
+      </div>
+      <p>Levels are replaced each time they change and are deleted when you turn notifications off or when Apple reports the token as no longer valid. Installations that stop checking in are removed after 90 days.</p>
+      <p>The relay runs on Vercel and keeps its records in an Upstash Redis database. Those providers, and the relay, can see the IP address of the request. We do not use it, and we do not store it.</p>
+      <p>This feature is off unless the app has been built with a relay configured. When it is off, nothing is sent and notifications arrive only while the app is open.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">3c. Trade Signals Delivered as Notifications</h2>
+      <p>Subscribers can be told about a new trade signal without opening the app. The signal (instrument, direction, entry, stop, confidence and timeframe) is produced by GoldVision's own analysis on the developer's machine and sent to the relay, which delivers it to the push tokens of subscribers whose subscription RevenueCat confirms is active. No information about you or your trades is involved in producing or publishing a signal.</p>
+      <p>Delivery is best-effort. A signal can arrive late, or not at all, because of your device, your network, Apple's push service, or our own outage. Do not rely on notifications as your only way of managing a trade.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">3d. AI Features (On-Device)</h2>
+      <p>GoldVision can explain a signal in plain language (&ldquo;Explain this signal&rdquo;) and answer questions about the analysis on screen (&ldquo;Ask a question&rdquo;). Both run entirely on your device, in one of two ways:</p>
+      <ul>
+        <li><strong>Apple Intelligence</strong>, on devices that have it. The text is processed on-device by Apple&rsquo;s system model under Apple&rsquo;s own terms.</li>
+        <li><strong>An optional downloadable model</strong> (Qwen2.5 1.5B, Apache-2.0 licence) for devices without Apple Intelligence. You download it in <strong>Settings &rarr; AI</strong>, only when you tap Download, directly from Hugging Face (huggingface.co) over Wi-Fi. Hugging Face can see the IP address of that request. You can delete the model at any time from the same screen.</li>
+      </ul>
+      <p>The AI is given only the analysis the app has already calculated &mdash; the instrument, the signal, the confidence and the app&rsquo;s own reasons, plus upcoming economic events &mdash; and, for questions, the text you type. None of it is sent to us or to any AI provider. The AI only rewords the analysis: it does not change a signal, and its output is educational, not financial advice.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">3e. Market Event Alerts</h2>
+      <p>Breakout, trend-reversal and volatility alerts are calculated on your device from the public market data the app already fetches, and are delivered as local notifications while the app is open. Nothing about them is sent to our servers.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">3b. Usage Counts and Crash Reports</h2>
+      <p>The app keeps simple counters — how many times a screen was opened, a ticket copied, a backtest run — so that it can be improved without an analytics company in the middle. It also stores summaries of crashes and freezes that iOS reports back to it.</p>
+      <div class="info-block">
+        <p>Both are stored on your device only and are never transmitted. You can read every one of them, and erase them, under <strong>Settings &rarr; Privacy &amp; Diagnostics</strong>. There is no account, no identifier, and no third-party analytics SDK in this app.</p>
       </div>
     </section>
 
@@ -239,23 +283,29 @@
       <p>To display live and historical gold prices, GoldVision makes outbound HTTPS requests to publicly available financial data services:</p>
       <ul>
         <li><strong>Yahoo Finance</strong> — live XAU/USD spot price and historical candlestick data (<code>query1.finance.yahoo.com</code>)</li>
-        <li><strong>Public RSS feeds</strong> — financial news headlines from sources such as Reuters and MarketWatch</li>
+        <li><strong>Public RSS feeds</strong> — financial news headlines from the publishers listed in the App</li>
+        <li><strong>TradingView</strong> — a WebKit-based live price connection (<code>tradingview.com</code>)</li>
+        <li><strong>Swissquote and gold-api.com</strong> — live spot quotes, requested directly or through our relay</li>
+        <li><strong>FRED (Federal Reserve Bank of St. Louis)</strong> — real-yield data</li>
+        <li><strong>CFTC</strong> — the weekly Commitments of Traders report</li>
+        <li><strong>An economic-calendar feed (faireconomy.media)</strong> — scheduled data-release times</li>
+        <li><strong>Hugging Face</strong> — only if you choose to download the on-device AI model (section 3d)</li>
       </ul>
-      <p>These requests are one-way data pulls — no user data is included in the request payload. Your IP address may be visible to these services as part of normal HTTPS connectivity, the same as any web browser visit. GoldVision does not control those services' privacy practices.</p>
+      <p>GoldVision does not add your name or account details to these requests. Your IP address and standard device/browser request metadata may be visible to these services as part of normal HTTPS connectivity. GoldVision does not control their privacy practices.</p>
     </section>
 
     <!-- 5. Subscriptions -->
     <section>
       <h2 class="section-title">5. Subscriptions &amp; In-App Purchases <span class="tag">APPLE IAP</span></h2>
       <p>GoldVision Pro subscriptions are processed entirely through Apple's App Store in-app purchase system (StoreKit). We never see, store, or process your payment card details.</p>
-      <p>Apple provides us with an anonymised receipt indicating whether a subscription is active. No personally identifiable information is shared with us as part of this process. Apple's privacy policy governs all payment handling: <a href="https://www.apple.com/legal/privacy/" style="color:var(--gold)" target="_blank">apple.com/legal/privacy</a>.</p>
+      <p>Purchases are also processed by <strong>RevenueCat</strong>, a subscription-management service. RevenueCat receives your App Store receipt and an anonymous app user ID, and tells the app whether your subscription is active. We do not receive your name, email or payment details. RevenueCat's privacy policy governs its handling of that data (<a href="https://www.revenuecat.com/privacy" style="color:var(--gold)" target="_blank">revenuecat.com/privacy</a>). Apple's privacy policy governs all payment handling: <a href="https://www.apple.com/legal/privacy/" style="color:var(--gold)" target="_blank">apple.com/legal/privacy</a>.</p>
       <p>To manage, cancel, or view your subscription, go to <strong>Settings → Apple ID → Subscriptions</strong> on your iPhone.</p>
     </section>
 
     <!-- 6. Push Notifications -->
     <section>
       <h2 class="section-title">6. Push Notifications</h2>
-      <p>With your permission, GoldVision delivers local push notifications for price alerts and high-impact economic events. These notifications are generated entirely on-device by iOS — no notification payload is routed through our servers. We do not use Apple Push Notification service (APNs) or any third-party push service.</p>
+      <p>With your permission, GoldVision delivers notifications for trading signals, price levels and high-impact economic events. Some are generated on your device by iOS. Price-level and signal notifications for when the app is closed are delivered through Apple Push Notification service (APNs) by our relay server, as described in sections 3a and 3c.</p>
       <p>You can enable or disable notifications at any time in your iPhone's <strong>Settings → Notifications → GoldVision</strong>.</p>
     </section>
 
@@ -267,18 +317,18 @@
 
     <!-- 8. Third-Party SDKs -->
     <section>
-      <h2 class="section-title">8. Third-Party SDKs &amp; Analytics</h2>
-      <p>GoldVision contains <strong>no third-party advertising SDKs, analytics SDKs, or tracking libraries</strong>. There are no embedded services from Google, Facebook, Firebase, Mixpanel, Amplitude, Sentry, Crashlytics, or equivalent providers.</p>
-      <p>The App's only external dependencies are Apple's native system frameworks (StoreKit, UserNotifications, WebKit, Charts) — all governed by Apple's own privacy policy.</p>
+      <h2 class="section-title">8. Advertising, Tracking &amp; Diagnostics</h2>
+      <p>GoldVision contains no advertising and no advertising SDK. It does not use the advertising identifier, does not show Apple's App Tracking Transparency prompt, and does not track you across other companies' apps or websites.</p>
+      <p>The only third-party SDK that talks to an outside service is RevenueCat's purchases SDK, described in section 5. The app also contains open-source libraries that run the optional AI model on your device (MLX and swift-transformers); they make no network requests of their own and collect nothing. GoldVision has no analytics service: usage counts and crash summaries stay on your device, as described in section 3b.</p>
     </section>
 
     <!-- 9. Data Retention -->
     <section>
       <h2 class="section-title">9. Data Retention &amp; Deletion</h2>
-      <p>Because no data is collected or stored on our end, there is nothing for us to delete on your behalf. All locally stored data (alerts, journal entries, signal history) can be removed at any time by:</p>
+      <p>GoldVision does not operate user accounts. The only data we hold on a server is what the relay stores for closed-app alerts (section 3a). To remove it, turn notifications off in the app, which clears your levels, or contact us and we will delete the record tied to your push token. Locally stored data can be removed by deleting the App. Data processed by Apple, RevenueCat, Yahoo Finance, TradingView and the other providers in section 4 is governed by those providers' retention and deletion policies.</p>
       <ul>
         <li>Deleting GoldVision from your device (all app data is permanently erased by iOS)</li>
-        <li>Using the "Reset Disclaimer &amp; Onboarding" option in Settings to clear preferences</li>
+        <li>Using feature-specific clear/reset controls for signal history, paper trading, or journal records</li>
       </ul>
     </section>
 
